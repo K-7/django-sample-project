@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+    {% include "top_bar.html" %}
+    <style>
+        .profile-progress {
+            width: 100%;
+            height: 100px;
+            background: black;
+            border-radius: 4px;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .profile-progress {
+            padding-top: 10px;
+        }
+
+        .progress {
+            margin: 24px;
+            height: 17px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 335px;
+        }
+
+        .banner .btn {
+            left: 31px;
+            position: absolute;
+            bottom: 20px;
+        }
+
+        .img-size{
+            width:100%;
+            height: 200px
+        }
+
+        .img-container {
+            position: relative;
+            text-align: center;
+            color: white;
+            margin: 10px;
+        }
+
+        /* Bottom left text */
+        .bottom-left {
+            position: absolute;
+            bottom: 8px;
+            left: 16px;
+        }
+
+        /* Top left text */
+        .top-left {
+            position: absolute;
+            text-align: left;
+            top: 8px;
+            left: 16px;
+        }
+
+        .top-left span{
+            font-size: 24px;
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-progress">
+                    <div class="row white text-center">
+                        <div class="col-md-12">COMPLETE YOUR PROFILE EARN $1</div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-12">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped active" role="progressbar"
+                                     aria-valuenow="2" aria-valuemin="0"
+                                     aria-valuemax="100" style="min-width: 2em; width: 10%;">10%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="banner" style="background-image: url('{{ STATIC_URL }}images/p222.png')">
+                            <a class="btn btn-default" href="#" role="button">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+
+                <div class="row">
+                    {% for gallery in gallery_list %}
+                        <div class="col-md-6">
+                            <div class="img-container">
+                                <img src='{{ STATIC_URL }}images/{{ gallery.filename }}' class="img-responsive img-size" alt="Not Found">
+                                <div class="top-left"><span>{{ gallery.title }}</span><br>{{ gallery.short_description }}</div>
+                                <div class="bottom-left"><a class="btn btn-default" href="#" role="button">Learn More</a></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+
+{% endblock %}
+
