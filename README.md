@@ -1,5 +1,5 @@
 # django-sample-project
-
+Python 2.7 used
 
 ### Setup Instructions
 
